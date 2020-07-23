@@ -3,7 +3,7 @@ Select a.emp_no, a.last_name, a.first_name, a.sex, b.salary from "Employees" as 
 Where a.emp_no = b.emp_no;
 
 -- 2. List first name, last name, and hire date for employees who were hired in 1986.
-Select first_name, last_name, hire_date from "Employees"
+Select first_name, last_name, CONCAT(EXTRACT(MONTH FROM hire_date),'/',EXTRACT(DAY FROM hire_date),'/',EXTRACT(YEAR FROM hire_date)) from "Employees"
 Where EXTRACT(YEAR FROM hire_date) = 1986;
 
 -- 3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
@@ -32,4 +32,6 @@ select last_name, count(last_name) from "Employees"
 group by last_name
 order by  count(last_name) desc;
 
-
+-- Search ID Number 499942
+select * from "Employees"
+where emp_no = 499942;
